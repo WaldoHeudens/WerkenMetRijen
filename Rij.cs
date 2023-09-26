@@ -6,25 +6,31 @@ using System.Threading.Tasks;
 
 namespace WerkenMetRijen
 {
-     internal class Rij
+     internal class Rij <T>
     {
-        List<int> container;
+        List<T> container;
 
         internal Rij()
         {
-            container = new List<int>();
+            container = new List<T>();
         }
 
-        public void Toevoegen(int i)
+        public void Toevoegen(T i)
         {
             container.Add(i);
         }
 
-        public int Uithalen()
+
+        public bool IsLeeg()
+        { 
+            return container.Count == 0; 
+        }
+
+        public T Uithalen()
         {
-            if (container.Count == 0)
-                return int.MinValue;
-            int even = container[0];
+            //if (container.Count == 0)
+            //    return int.MinValue;
+            T even = container[0];
             container.RemoveAt(0);
             return even;
         }
@@ -37,7 +43,7 @@ namespace WerkenMetRijen
         public override string ToString()
         {
             string s = "";
-            foreach(int i in container) 
+            foreach(T i in container) 
             {
                 s += i.ToString() + "\n";
             }
